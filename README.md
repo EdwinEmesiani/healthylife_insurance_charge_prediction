@@ -3,7 +3,7 @@
 
 ## 3. README.md – HealthyLife Insurance Charges Project
 
-**File:** `README.md` in your HealthyLife repo (e.g. `healthylife_insurance_charge_prediction`)
+**File:** `README.md` in my HealthyLife repo ( `healthylife_insurance_charge_prediction`)
 
 ```markdown
 # HealthyLife Insurance Charge Prediction – Deployable ML System
@@ -77,3 +77,71 @@ Predict insurance charges
 Log inputs + predictions (CommitScheduler → HF Dataset)
       ↓
 Monitoring & Drift Analysis (notebook / dashboards)
+Key Features
+
+EDA layer:
+
+Distribution of charges by sex and smoking status.
+
+Age and BMI trends vs charges.
+
+Clear visualisation of risk factors (especially smoking and older age).
+
+Three regression models compared:
+
+LinearRegression
+
+DecisionTreeRegressor
+
+RandomForestRegressor (best performer: highest R², lowest MSE).
+
+Robust preprocessing with scikit-learn Pipelines:
+
+ColumnTransformer with StandardScaler and OneHotEncoder.
+
+Ensures training and inference use the same transformations.
+
+Model packaging:
+
+train.py encapsulates data loading, training, evaluation, and model.joblib creation.
+
+requirements.txt declares all dependencies.
+
+Deployment:
+
+app.py provides a Gradio UI for HealthyLife underwriters and non-technical stakeholders.
+
+Hosted on Hugging Face Spaces.
+
+Monitoring & drift concept:
+
+Requests and predictions logged (e.g. to logs/ and a Hub dataset via CommitScheduler).
+
+Notebook logic to compare training target distribution vs live prediction distribution and flag potential model drift.
+
+Simple checks for data drift on key features (e.g. age, BMI).
+
+4. Tech Stack
+
+Language: Python
+
+ML & Data: pandas, numpy, scikit-learn, joblib
+
+Serving: gradio, Hugging Face Spaces
+
+Monitoring / Logging: huggingface_hub.CommitScheduler, JSON logs (with drift analysis in notebook)
+
+5. How to Run Locally
+5.1. Train the Model
+git clone https://github.com/<your-username>/healthylife_insurance_charge_prediction.git
+cd healthylife_insurance_charge_prediction
+
+pip install -r requirements.txt
+
+python train.py
+# -> creates model.joblib
+
+5.2. Run the Gradio App
+python app.py
+
+
