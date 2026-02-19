@@ -1,7 +1,7 @@
 
 ---
 
-## 3. README.md – HealthyLife Insurance Charges Project
+## README.md – HealthyLife Insurance Charges Project
 
 **File:** `README.md` in my HealthyLife repo ( `healthylife_insurance_charge_prediction`)
 
