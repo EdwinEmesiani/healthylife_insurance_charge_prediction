@@ -1,0 +1,11 @@
+Monitoring & Data Drift (Conceptual)
+
+The project sketches a monitoring loop:
+
+Logging: Each prediction logs features + predicted charges.
+
+Model drift: Compare the distribution of training targets vs live predictions. Significant shifts can trigger retraining.
+
+Data drift: Compare feature means/variances (e.g. age, BMI) between training data and recent live traffic.
+
+These checks can be extended with EvidentlyAI dashboards and integrated into a CI/CD pipeline with GitHub Actions.
