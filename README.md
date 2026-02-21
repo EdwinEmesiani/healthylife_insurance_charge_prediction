@@ -1,8 +1,5 @@
 > Part of my **deployable AI systems portfolio**. See my [GitHub profile](https://github.com/EdwinEmesiani) for related projects like **Technoecom E-Commerce EDA** and **RAG_10k**.
 
-README.md – HealthyLife Insurance Charges Project
-
-**File:** `README.md`in my HealthyLife repo 
 
 # HealthyLife Insurance Charge Prediction – Deployable ML System
 
