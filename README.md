@@ -1,8 +1,7 @@
 README.md – HealthyLife Insurance Charges Project
 
-**File:** `README.md` in your HealthyLife repo (e.g. `healthylife_insurance_charge_prediction`)
+**File:** `README.md`in my HealthyLife repo 
 
-```markdown
 # HealthyLife Insurance Charge Prediction – Deployable ML System
 
 > As an engineer building deployable AI systems, this project turns a **regression model** into a **live insurance pricing service** with monitoring and drift awareness.
