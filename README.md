@@ -1,6 +1,5 @@
 > Part of my **deployable AI systems portfolio**. See my [GitHub profile](https://github.com/EdwinEmesiani) for related projects like **Technoecom E-Commerce EDA** and **RAG_10k**.
 
-
 # HealthyLife Insurance Charge Prediction – Deployable ML System
 
 > As an engineer building deployable AI systems, this project turns a **regression model** into a **live insurance pricing service** with monitoring and drift awareness.
@@ -26,7 +25,7 @@ The project goes beyond a notebook model and demonstrates:
 - **Production-style preprocessing and training pipeline**  
 - **Deployed Gradio application** on Hugging Face Spaces  
 - **Logging and monitoring** concepts for data and model drift  
-- A foundation for **MLOps workflows** (retraining & CI/CD).
+- A foundation for **MLOps workflows** (retraining & CI/CD)
 
 ---
 
@@ -72,61 +71,95 @@ Predict insurance charges
 Log inputs + predictions (CommitScheduler → HF Dataset)
       ↓
 Monitoring & Drift Analysis (notebook / dashboards)
-
 3. Key Features
-EDA layer:
+3.1 EDA Layer
 
-Distribution of charges by sex and smoking status.
+Distribution of charges by sex and smoking status
 
-Age and BMI trends vs charges.
+Age and BMI trends vs charges
 
-Clear visualisation of risk factors (especially smoking and older age).
+Clear visualisation of risk factors (especially smoking and older age)
 
-Three regression models compared:
+3.2 Three Regression Models Compared
 
 LinearRegression
 
 DecisionTreeRegressor
 
-RandomForestRegressor (best performer: highest R², lowest MSE).
+RandomForestRegressor
 
-Robust preprocessing with scikit-learn Pipelines:
+Selected as best performer (highest R², lowest MSE)
 
-ColumnTransformer with StandardScaler and OneHotEncoder.
+3.3 Robust Preprocessing with scikit-learn Pipelines
 
-Ensures training and inference use the same transformations.
+ColumnTransformer with:
 
-Model packaging:
+StandardScaler for numerical features
 
-train.py encapsulates data loading, training, evaluation, and model.joblib creation.
+OneHotEncoder for categorical features
 
-requirements.txt declares all dependencies.
+Ensures training and inference use the same transformations
 
-Deployment:
+3.4 Model Packaging
 
-app.py provides a Gradio UI for HealthyLife underwriters and non-technical stakeholders.
+train.py encapsulates:
 
-Hosted on Hugging Face Spaces.
+Data loading
 
-Monitoring & drift concept:
+Training
 
-Requests and predictions logged (e.g. to logs/ and a Hub dataset via CommitScheduler).
+Evaluation
 
-Notebook logic to compare training target distribution vs live prediction distribution and flag potential model drift.
+model.joblib creation
 
-Simple checks for data drift on key features (e.g. age, BMI).
+requirements.txt declares all dependencies
+
+3.5 Deployment
+
+app.py provides a Gradio UI for HealthyLife underwriters and non-technical stakeholders
+
+Hosted on Hugging Face Spaces
+
+3.6 Monitoring & Drift Concepts
+
+Requests and predictions logged (e.g. to logs/ and a Hub dataset via CommitScheduler)
+
+Notebook logic to:
+
+Compare training target distribution vs live prediction distribution to flag potential model drift
+
+Perform simple data drift checks on key features (e.g. age, BMI)
 
 4. Tech Stack
-Language: Python
 
-ML & Data: pandas, numpy, scikit-learn, joblib
+Language
 
-Serving: gradio, Hugging Face Spaces
+Python
 
-Monitoring / Logging: huggingface_hub.CommitScheduler, JSON logs (with drift analysis in notebook)
+ML & Data
+
+pandas
+
+numpy
+
+scikit-learn
+
+joblib
+
+Serving
+
+gradio
+
+Hugging Face Spaces
+
+Monitoring / Logging
+
+huggingface_hub.CommitScheduler
+
+JSON logs (with drift analysis in notebook)
 
 5. How to Run Locally
-5.1. Train the Model
+5.1 Train the Model
 git clone https://github.com/<your-username>/healthylife_insurance_charge_prediction.git
 cd healthylife_insurance_charge_prediction
 
@@ -134,22 +167,37 @@ pip install -r requirements.txt
 
 python train.py
 # -> creates model.joblib
-5.2. Run the Gradio App
+5.2 Run the Gradio App
 python app.py
-Then open the local URL printed by Gradio (usually http://127.0.0.1:7860).
 
+Then open the local URL printed by Gradio (usually:
+
+http://127.0.0.1:7860
+
+).
 
 6. Example Business Insight
-•	Smokers and older customers with high BMI have disproportionately higher charges, which confirms risk-based pricing patterns.
-•	The Random Forest model captures these non-linear interactions better than a simple linear model, leading to more accurate charge estimation.
-________________________________________
+
+Smokers and older customers with high BMI have disproportionately higher charges, which confirms risk-based pricing patterns.
+
+The Random Forest model captures these non-linear interactions better than a simple linear model, leading to more accurate charge estimation.
+
 7. Monitoring & Data Drift (Conceptual)
+
 The project sketches a monitoring loop:
-•	Logging: Each prediction logs features + predicted charges.
-•	Model drift: Compare the distribution of training targets vs live predictions. Significant shifts can trigger retraining.
-•	Data drift: Compare feature means/variances (e.g. age, BMI) between training data and recent live traffic.
+
+Logging:
+Each prediction logs features + predicted charges.
+
+Model drift:
+Compare the distribution of training targets vs live predictions.
+Significant shifts can trigger retraining.
+
+Data drift:
+Compare feature means/variances (e.g. age, BMI) between training data and recent live traffic.
+
 These checks can be extended with EvidentlyAI dashboards and integrated into a CI/CD pipeline with GitHub Actions.
-________________________________________
+
 8. Repository Structure
 .
 ├── data/
@@ -161,12 +209,19 @@ ________________________________________
 ├── model.joblib
 ├── requirements.txt
 └── README.md
-________________________________________
 9. Possible Next Steps
-•	Add proper monitoring dashboards (EvidentlyAI) and alerting.
-•	Implement a scheduled retraining job (e.g. GitHub Actions + HF Hub).
-•	Extend the API surface: batch inferencing endpoints, multi-policy simulations, or scenario testing for pricing teams.
 
+Add proper monitoring dashboards (EvidentlyAI) and alerting
+
+Implement a scheduled retraining job (e.g. GitHub Actions + HF Hub)
+
+Extend the API surface:
+
+Batch inferencing endpoints
+
+Multi-policy simulations
+
+Scenario testing for pricing teams
 
 
 
